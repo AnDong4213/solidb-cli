@@ -1,13 +1,45 @@
 {
-  "name": "create",
+  "name": "@solidb-cli/create",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Create Solid apps with low configuration",
+  "author": "Anong",
+  "contributors": [
+    "Anong",
+    "Asong"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "solidjs",
+    "solid",
+    "cli"
+  ],
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./src/index.ts",
+      "require": "./dist/index.mjs"
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "start": "jiti ./src/bin.ts",
+    "build": "tsc && tsup"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.2.0",
+    "@solidb-cli/gitcore": "workspace:*",
+    "@solidb-cli/utils": "workspace:*",
+    "citty": "^0.2.2",
+    "picocolors": "^1.1.1",
+    "sucrase": "^3.35.1"
+  }
 }

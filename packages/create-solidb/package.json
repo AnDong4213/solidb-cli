@@ -1,13 +1,39 @@
 {
   "name": "create-solidb",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "jiti ./src/bin.ts"
+  "description": "Create Solid apps with low configuration",
+  "author": "Anong",
+  "contributors": [
+    "Anong",
+    "Asong"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "solidjs",
+    "solid",
+    "cli"
+  ],
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "bin": {
+    "create-solid": "./dist/bin.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "jiti ./src/bin.ts",
+    "build": "tsc && tsup"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@clack/prompts": "^1.2.0",
+    "citty": "^0.2.2",
+    "picocolors": "^1.1.1"
+  },
+  "dependencies": {
+    "@solidb-cli/create": "workspace:*"
+  }
 }
