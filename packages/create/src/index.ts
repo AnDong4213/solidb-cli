@@ -5,6 +5,10 @@ import { defineCommand } from "citty";
 import * as p from "@clack/prompts";
 import { getTemplatesList, GIT_IGNORE, isValidTemplate, PROJECT_TYPES, ProjectType } from "./utils/constants";
 import { cancelable, spinnerify } from "@solidb-cli/utils/ui";
+import { detectPackageManager } from "@solidb-cli/utils/package-manager";
+import { createStart } from "./create-start";
+import { createLibrary } from "./create-library";
+import { createVanilla } from "./create-vanilla";
 
 export const createSolidb = (version: string) => {
 	return defineCommand({
@@ -156,13 +160,54 @@ export const createSolidb = (version: string) => {
 
 			// Need to transpile if the user wants Jabascript, but their selected template isn't Javascript
 			const transpileToJS = useJS && !template.startsWith("js");
+
 			if (projectType === "start" && isValidTemplate("start", template, isV2)) {
+				await spinnerify({
+					startText: "Creating project\n\n",
+					finishText: "Project created 🎉",
+					fn: () => createStart({ template, destination: projectName }, transpileToJS, isV2),
+				});
 			} else if (projectType === "library" && isValidTemplate("library", template)) {
+				await spinnerify({
+					startText: "Creating project",
+					finishText: "Project created 🎉",
+					fn: () => createLibrary({ destination: projectName }),
+				});
 			} else if (projectType === "vanilla" && isValidTemplate(projectType, template)) {
+				await spinnerify({
+					startText: "Creating project",
+					finishText: "Project created 🎉",
+					fn: () => createVanilla({ template, destination: projectName }, transpileToJS),
+				});
 			} else {
 				p.log.error(`Template ${template} is not valid for project type ${projectType}`);
 				process.exit(0);
 			}
+
+			// Add .gitignore
+			writeFileSync(join(projectName, ".gitignore"), GIT_IGNORE);
+
+			// Add "Created with Solid CLI" text to bottom of README
+			const readmePath = `${projectName}/README.md`;
+			if (existsSync(readmePath)) {
+				const contents = (await readFile(readmePath)).toString();
+				if (!contents.includes("This project was created with the [Solid CLI]"))
+					await writeFile(
+						readmePath,
+						contents +
+							"\n## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)\n",
+					);
+			}
+
+			// Next steps..
+			const pM = detectPackageManager();
+			console.log("pM--", pM);
+			p.note(
+				(projectName === "." ? "" : `cd ${projectName}\n`) +
+					`${pM.name} install
+${pM.name} ${pM.runScriptCommand("dev")}`,
+				"To get started, run:",
+			);
 		},
 	});
 };
