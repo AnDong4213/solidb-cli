@@ -7,3 +7,15 @@ export type CreateStartArgs = {
 	template: StartTemplate | StartTemplateV2;
 	destination: string;
 };
+
+export const createStartTS = ({ template, destination }: CreateStartArgs, v2?: boolean) => {
+	const subdir = v2 ? `solid-start-v2/${template}` : `solid-start-v1/${template}`;
+
+	return downloadRepo(
+		{
+			repo: { owner: "solidjs", name: "templates", subdir },
+			dest: destination,
+		},
+		GithubFetcher,
+	);
+};
