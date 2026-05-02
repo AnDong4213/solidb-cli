@@ -9,7 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "release": "pnpm build && changeset publish",
-    "start": "pnpm build && cd packages/create-solid && pnpm start",
+    "start": "pnpm build && cd packages/create-solidb && pnpm start",
     "dev": "cd packages/create-solidb && pnpm start",
     "format": "prettier --write .",
     "watch:build": "turbo watch build"
