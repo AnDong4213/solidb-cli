@@ -19,7 +19,7 @@
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
-      "import": "./src/index.ts",
+      "import": "./src/index.mjs",
       "require": "./dist/index.mjs"
     }
   },
@@ -28,7 +28,6 @@
     "types"
   ],
   "scripts": {
-    "start": "jiti ./src/bin.ts",
     "build": "tsc && tsup"
   },
   "publishConfig": {

@@ -2,14 +2,26 @@
   "name": "@solidb-cli/gitcore",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.ts",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
   "license": "MIT",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsc && tsup"
+  },
   "packageManager": "pnpm@10.30.0",
   "devDependencies": {
     "@types/tar": "^7.0.87"

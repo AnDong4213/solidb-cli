@@ -18,52 +18,21 @@
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
-      "import": "./src/index.ts",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.mjs"
-    },
-    "./paths": {
-      "types": "./types/paths/index.d.ts",
-      "import": "./src/paths/index.ts",
-      "require": "./dist/paths/index.mjs"
-    },
-    "./transform": {
-      "types": "./types/transform/index.d.ts",
-      "import": "./src/transform/index.ts",
-      "require": "./dist/transform/index.mjs"
-    },
-    "./updates": {
-      "types": "./types/updates/index.d.ts",
-      "import": "./src/updates/index.ts",
-      "require": "./dist/updates/index.mjs"
-    },
-    "./fs": {
-      "types": "./types/fs/index.d.ts",
-      "import": "./src/fs/index.ts",
-      "require": "./dist/fs/index.mjs"
-    },
-    "./util-types": {
-      "types": "./types/util-types/index.d.ts",
-      "import": "./src/util-types/index.ts",
-      "require": "./dist/util-types/index.mjs"
-    },
-    "./primitives": {
-      "types": "./types/primitives/index.d.ts",
-      "import": "./src/primitives/index.ts",
-      "require": "./dist/primitives/index.mjs"
     },
     "./package-manager": {
       "types": "./types/package-manager/index.d.ts",
-      "import": "./src/package-manager/index.ts",
+      "import": "./dist/package-manager/index.mjs",
       "require": "./dist/package-manager/index.mjs"
     },
     "./ui": {
       "types": "./types/ui/index.d.ts",
-      "import": "./src/ui/index.ts",
+      "import": "./dist/ui/index.mjs",
       "require": "./dist/ui/index.mjs"
     }
   },
   "scripts": {
-    "test": "vitest run",
     "build": "tsc && tsup"
   },
   "publishConfig": {
