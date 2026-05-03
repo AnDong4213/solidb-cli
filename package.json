@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "turbo run build",
+    "changeset": "changeset",
     "version": "changeset version",
     "release": "pnpm build && changeset publish",
     "start": "pnpm build && cd packages/create-solidb && pnpm start",
