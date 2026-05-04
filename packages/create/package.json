@@ -19,7 +19,7 @@
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
-      "import": "./src/index.mjs",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.mjs"
     }
   },
