@@ -16,6 +16,10 @@ jobs:
     # if: github.repository == '你的GitHub用户名/你的仓库名'
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write # 允许写入仓库内容，以便创建 PR 或发布版本
+      packages: write # 允许发布 npm 包
+      pull-requests: write # 允许创建和管理 PR
     steps:
       # 1. 检出代码
       - name: Checkout Repo
