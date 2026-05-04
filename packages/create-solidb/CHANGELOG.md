@@ -1,5 +1,11 @@
 # create-solidb
 
+## 1.0.2
+
+### Patch Changes
+
+- 87fdd1a: publish error
+
 ## 1.0.1
 
 ### Patch Changes
