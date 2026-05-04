@@ -75,7 +75,7 @@ export const createSolidb = (version: string) => {
 			},
 		},
 		async run(params) {
-			console.log(params.args);
+			// console.log(params.args);
 			const {
 				projectNamePositional,
 				templatePositional,
@@ -201,7 +201,7 @@ export const createSolidb = (version: string) => {
 
 			// Next steps..
 			const pM = detectPackageManager();
-			console.log("pM--", pM);
+			// console.log("pM--", pM);
 			p.note(
 				(projectName === "." ? "" : `cd ${projectName}\n`) +
 					`${pM.name} install
