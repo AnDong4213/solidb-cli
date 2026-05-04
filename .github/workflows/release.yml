@@ -1,0 +1,64 @@
+name: CLI Release
+
+# 触发条件：当代码被推送到 main 分支时运行
+on:
+  push:
+    branches: [main]
+
+# 设置环境变量，方便后续步骤使用
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+
+jobs:
+  release:
+    # 防止在 forks 的项目中错误运行
+    # if: github.repository == '你的GitHub用户名/你的仓库名'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # 1. 检出代码
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # 需要获取完整的 Git 历史，以便 Changesets 正确生成 Changelog
+          fetch-depth: 0
+
+      # 2. 安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      # 3. 安装 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          # 利用 GitHub 的缓存功能缓存 pnpm store，加速依赖安装
+          cache: "pnpm"
+
+      # 4. 安装项目依赖
+      - name: Install Dependencies
+        run: pnpm install
+
+      # 5. 构建项目
+      - name: Build Packages
+        run: pnpm build
+
+      # 6. 使用 Changesets 动作
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # 执行版本更新的命令
+          version: pnpm run version
+          # 执行发布的命令
+          publish: pnpm run release
+          # 自动生成的 PR 标题
+          title: "chore: version packages"
+          # 自动生成的 PR 提交信息
+          commit: "chore: version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
