@@ -1,5 +1,11 @@
 # @solidb-cli/create
 
+## 2.0.2
+
+### Patch Changes
+
+- 1b38355: 删除注释
+
 ## 2.0.1
 
 ### Patch Changes
