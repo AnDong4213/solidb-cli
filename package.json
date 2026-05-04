@@ -10,6 +10,7 @@
     "build": "turbo run build",
     "changeset": "changeset",
     "version": "changeset version",
+    "publish": "changeset publish",
     "release": "pnpm build && changeset publish",
     "start": "pnpm build && cd packages/create-solidb && pnpm start",
     "dev": "cd packages/create-solidb && pnpm start",
@@ -46,5 +47,6 @@
       "@swc/core",
       "esbuild"
     ]
-  }
+  },
+  "access": "public"
 }
