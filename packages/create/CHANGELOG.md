@@ -1,5 +1,12 @@
 # @solidb-cli/create
 
+## 2.0.3
+
+### Patch Changes
+
+- Updated dependencies [c94881a]
+  - @solidb-cli/utils@1.1.1
+
 ## 2.0.2
 
 ### Patch Changes

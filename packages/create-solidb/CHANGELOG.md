@@ -1,5 +1,11 @@
 # create-solidb
 
+## 1.0.6
+
+### Patch Changes
+
+- @solidb-cli/create@2.0.3
+
 ## 1.0.5
 
 ### Patch Changes
