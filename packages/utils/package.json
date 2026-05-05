@@ -21,6 +21,11 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.mjs"
     },
+    "./transform": {
+      "types": "./types/transform/index.d.ts",
+      "import": "./dist/transform/index.mjs",
+      "require": "./dist/transform/index.mjs"
+    },
     "./package-manager": {
       "types": "./types/package-manager/index.d.ts",
       "import": "./dist/package-manager/index.mjs",
