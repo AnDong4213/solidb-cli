@@ -1,5 +1,12 @@
 # @solidb-cli/create
 
+## 2.0.5
+
+### Patch Changes
+
+- Updated dependencies [326f822]
+  - @solidb-cli/gitcore@4.0.0
+
 ## 2.0.4
 
 ### Patch Changes
