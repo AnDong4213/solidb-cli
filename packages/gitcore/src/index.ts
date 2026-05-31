@@ -110,7 +110,7 @@ export const downloadAndExtract = async (
 export const downloadRepo = async (opts: DownloadAndExtract, fetcher?: Fetcher) => {
 	// Attempt refetching
 	let retries = 2;
-	// console.log("开始下载咯...");
+	console.log("开始下载咯...");
 	console.log("复习哟哟...");
 	try {
 		await downloadAndExtract(opts, fetcher);
