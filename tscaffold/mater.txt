@@ -1,0 +1,3 @@
+1、Kimi Code 是月之暗面（Moonshot AI）于 2026 年 1 月正式发布的AI Agent编程工具，它直接运行在终端（CLI）中，可以无缝集成到 VSCode、Cursor、JetBrains 等主流编辑器
+
+2、借鉴Kimi Code这类AI Agent工具的设计理念，让你的脚手架具备智能化的项目初始化能力
